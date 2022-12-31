@@ -1,0 +1,108 @@
+#include<iostream>
+using namespace std;
+
+class pallin{
+    char s1[20];
+    char s2[20];
+    char rev[20];
+    int top;
+    public:
+     pallin(){
+        top=-1;
+    }
+    void checkpallin();
+    void push(char);
+    char pop();
+    int IsStackEmpty();
+    int IsStackFull();
+
+   
+
+};
+
+void pallin::checkpallin(){
+    
+    int flag=0;
+    char p;
+  
+    cout<<"Enter the string: "<<endl;
+    cin>>s1;
+    int i=0;
+    while(s1[i]!='\0'){
+        p=s1[i];
+        push(p);
+        i=i+1;
+    }
+
+    i=0;
+    while(!IsStackEmpty()){
+        rev[i]=pop();
+        i++;
+
+    }
+    i=0;
+    while(s1[i]!='\0'){
+        if(rev[i]==s1[i]){
+            i++;
+        }
+        else{
+            flag=1;
+            break;
+        }
+    }
+
+    if(flag==0){
+        cout<<"\nGiven string is  pallindrome "<<endl;
+    }
+    else{
+        cout<<"\n not pallindrome"<<endl;;
+    }
+
+
+}
+
+int pallin::IsStackFull(){
+    if(top==19){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
+int pallin::IsStackEmpty(){
+    if(top==-1){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
+void pallin::push(char x){
+    top=top+1;
+    s2[top]=x;
+}
+
+char pallin::pop(){
+    char x2;
+    x2=s2[top];
+    top=top-1;
+    return x2;
+
+}
+
+int main(){
+    pallin p1;
+    char ans='n';
+    do{
+       
+        p1.checkpallin();
+        cout<<"\n**********You wanty check another String is pallindrome or not (y/n)**************"<<endl;
+        cin>>ans;
+
+    }
+    while(ans=='Y'||ans=='y');
+    return 0;
+
+}
