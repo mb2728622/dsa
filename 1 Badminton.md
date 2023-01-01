@@ -1,4 +1,4 @@
-print("Practical No 1 \nName : Krushna Babasaheb Dhadge [SE-A]")
+
 def removeDuplicate(t):
     l1 = []
     for i in t:
